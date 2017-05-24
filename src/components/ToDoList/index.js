@@ -11,15 +11,22 @@ class TodoList extends Component {
     return(
       <ul id="todo-list">
         { this.props.todo.todolist.map(function(obj, index){
-          if (obj.completed === true){
+          //Completed only
+          if (obj.completed && that.props.view.completedView){
           return(
             <li className="todo todo-item completed" onClick={that.clickHandler.bind(that, index)} key={index}>{obj.name}</li>
           );}
-          else{
+          else if(!obj.completed  && that.props.view.todoView && !that.props.view.completedView){
             return(
               <li className="todo todo-item incomplete" onClick={that.clickHandler.bind(that, index)} key={index}>{obj.name}</li>
             );
           }
+          else if(that.props.view.todoView && that.props.view.completedView){
+            return(
+              <li className={obj.completed ? "todo todo-item completed" : "todo todo-item incomplete"} onClick={that.clickHandler.bind(that, index)} key={index}>{obj.name}</li>
+            );
+          }
+
         }) }
       </ul>
     );
@@ -29,6 +36,7 @@ class TodoList extends Component {
 export default connect(
   state => ({
     todo: state.todo,
+    view: state.view
   }),
   {toggleActive}
 )(TodoList);
