@@ -7,13 +7,17 @@ class TodoForm extends Component {
   }
   render() {
     return (
-      <form onSubmit={this.props.handleSubmit(this.handleSubmit)}>
-        <div>
-          <label htmlFor="todo">Todo: </label>
-          <Field name="todo" component="input" type="text"/>
+      <section className="section-default">
+        <div className="container-fluid">
+          <form id="todo-form" onSubmit={this.props.handleSubmit(this.handleSubmit)}>
+            <label htmlFor="todo">Enter A New Item: </label>
+            <div className="form-group">
+              <Field name="todo" component="input" type="text" placeholder="Enter To-Do" />
+              <button className="btn-success" type="submit">Submit</button>
+            </div>
+          </form>
         </div>
-        <button type="submit">Submit</button>
-      </form>
+      </section>
     );
   }
 }

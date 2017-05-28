@@ -1,14 +1,78 @@
+// baseline
+
 $font-stack: Helvetica, sans-serif
-$primary-color: #333
+$blh: 30px
+
+// color vars
+
+$text-color: #333
+$success-color: #449d44
+$fail-color: #c9302c
+$success-color-bg: #dff0d8
+$fail-color-bg: #f2dede
+
+// mixins
+
+=transition($prop)
+  -webkit-transition: $prop .3s ease-out
+  -moz-transition: $prop .3s ease-out
+  -o-transition: $prop .3s ease-out
+  transition: $prop .3s ease-out
+
+=transition2($prop-a, $prop-b)
+  -webkit-transition: $prop-a .3s ease-out, $prop-b .3s ease-out
+  -moz-transition: $prop-a .3s ease-out, $prop-b .3s ease-out
+  -o-transition: $prop-a .3s ease-out, $prop-b .3s ease-out
+  transition: $prop-a .3s ease-out, $prop-b .3s ease-out
+
+// styles
+
+html, body
+  height: 100%
 
 body
   font: 100% $font-stack
-  color: $primary-color
+  color: $text-color
+
+#app-header,
+#app-footer
+  background-color: #eee
+  padding: $blh 0
+  margin-bottom: $blh
+  p 
+    margin: 0
+
+// root app
+#root 
+  display: block
+  height: 100%
 
 #todo-list
   padding: 0
-  li
-    display: block
+
+.todo-item
+  +transition2(background-color, border-color)
+  margin-bottom: $blh/2
+  border: 1px solid #e8e8e8
+  background-color: $fail-color-bg
+  border-color: $fail-color
+  display: block
+  text-align:center
+  padding: 5px 10px
+  &.incomplete
+    text-decoration: none
+  &.completed
+    text-decoration: line-through
+    color: #c1c1c1
+    background-color: $success-color-bg
+    border-color: $success-color
+
+#todo-form
+  text-align: left
+  margin-bottom: $blh
+
+.section-default 
+  width: 100%
 
 
 

@@ -1,5 +1,6 @@
 import update from 'react-addons-update';
 
+// seed info
 const initialState = {
   "todolist": [
     {"name": "Mow the lawn", "completed": false},
@@ -8,6 +9,11 @@ const initialState = {
     {"name": "Eat lunch", "completed": false},
   ]
 };
+
+// empty
+// const initialState = {
+//   "todolist": []
+// };
 
 export default function (state = initialState, action) {
   switch (action.type) {
