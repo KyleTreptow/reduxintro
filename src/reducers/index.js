@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 import { reducer as form } from 'redux-form';
 import todo from './todo'; 
+import view from './view'; 
 
 const appReducer = combineReducers({
   todo,
+  view,
   form
 });
 

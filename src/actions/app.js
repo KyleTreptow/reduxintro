@@ -12,3 +12,7 @@ export function formSubmit(data){
     dispatch(reset('todo'));
   };
 }
+
+export function todoViewActive(){ return (dispatch) => { dispatch({type: "TODO_VIEW_ACTIVE"}) }; }
+export function completedViewActive(){ return (dispatch) => { dispatch({type: "COMPLETED_VIEW_ACTIVE"}) }; }
+export function allViewActive(){ return (dispatch) => { dispatch({type: "ALL_VIEW_ACTIVE"}) }; }
