@@ -10,9 +10,8 @@ class TodoList extends Component {
     
     let that = this;
     return(
-      <section className="section-default">
-        <div className="container-fluid">
-           <ul id="todo-list">
+      
+      <ul id="todo-list">
         { this.props.todo.todolist.map(function(item, index){
           // vars
           let status = item.completed === true ? 'completed' : 'incomplete';
@@ -35,8 +34,7 @@ class TodoList extends Component {
 
         }) }
       </ul>
-        </div>
-      </section>
+        
     );
   }
 }

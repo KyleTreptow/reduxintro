@@ -15,50 +15,52 @@ class Home extends Component {
   onSubmit = data => this.props.formSubmit(data); 
 
   componentDidMount(){
-    console.log('Home Component Mounted -');
+    console.log('Home Component Mounted');
     //////////////////////////////////////////////
-      console.log('attempt ajax'); 
-      let ajaxCall =  fetch('http://localhost:4000/todos')
-        .then(response => response.json())
-        .then(json => {
-          // console.log('------------');
-          // console.log('Data from express backend - ajax call:');
-          // console.log(json);
-          // console.log('------------');
-          //return json;
-          this.props.retrieveItems(json);
-        })
-        .catch(error =>
-          dispatch(receivedDimensionAttributesError(dimensionName, error))
-        );
-      console.log('end ajax'); 
-      //////////////////////////////////////////////
+    let ajaxCall =  fetch('http://localhost:4000/todos')
+      .then(response => response.json())
+      .then(json => {
+        // console.log(json);
+        // return json;
+        this.props.retrieveItems(json);
+      })
+      .catch(error =>
+        dispatch(receivedDimensionAttributesError(dimensionName, error))
+      );
+    //////////////////////////////////////////////
   }
   render() {
     return (
     	<div id="app-wrapper">
         <Header />
     		<TabSelect />
+        <section className="section-default">
+        <div className="container-fluid">
+
     		{/* Conditional to render just ToDos */}
     		{ this.props.view.todoView && !this.props.view.completedView &&
     			<div>
+            <h2>To Do</h2>
   					<ToDoList />
   				</div>
   			}
   			{/* Conditional to render just Completed */}
   			{ !this.props.view.todoView && this.props.view.completedView &&
     			<div>
-  					<p>Completed</p>
+  					<h2>Completed</h2>
   					<ToDoList />
   				</div>
   			}
   			{/* Render all */}
   			{ this.props.view.todoView && this.props.view.completedView &&
     			<div>
-  					<p>All</p>
+  					<h2>All</h2>
   					<ToDoList />
   				</div>
   			}
+        
+        </div>
+        </section>
   			<ToDoForm onSubmit={this.onSubmit} />
         <Footer />
       </div>

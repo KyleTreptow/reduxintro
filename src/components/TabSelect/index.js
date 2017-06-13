@@ -14,11 +14,15 @@ class TabSelect extends Component {
   }
   render() {
     return(
-      <div className="tabSelect">
-        <span onClick={this.todoHandler.bind(this)} >Todo</span>
-        <span style={{margin: "0px 30px"}} onClick={this.completedHandler.bind(this)} >Completed</span>
-        <span onClick={this.allHandler.bind(this)} >All</span>
-      </div>
+      <section className="section-default">
+        <div className="container-fluid">
+          <ul className="tab-navi">
+            <li><button onClick={this.todoHandler.bind(this)} >Todo</button></li>
+            <li><button onClick={this.completedHandler.bind(this)} >Completed</button></li>
+            <li><button onClick={this.allHandler.bind(this)} >All</button></li>
+          </ul>
+        </div>
+      </section>
     );
   }
 }
