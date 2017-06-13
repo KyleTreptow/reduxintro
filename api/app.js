@@ -36,6 +36,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Enable CORS Access (API on same server, different port)
+app.use(function(req, res, next) {
+  // console.log('Test CORS Access');
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+// Routes
 app.use('/', index);
 app.use('/users', users);
 app.use('/todos', todos);
