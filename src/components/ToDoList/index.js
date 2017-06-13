@@ -1,30 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { toggleActive } from '../../actions/app.js';
-import { retrieveItems } from '../../actions/app.js';
 
 class TodoList extends Component {
-  componentDidMount(){
-    console.log('Todo List Mounted');
-    //////////////////////////////////////////////
-      console.log('attempt ajax'); 
-      let ajaxCall =  fetch('http://localhost:4000/todos')
-        .then(response => response.json())
-        .then(json => {
-          // console.log('------------');
-          // console.log('Data from express backend - ajax call:');
-          // console.log(json);
-          // console.log('------------');
-          //return json;
-          this.props.retrieveItems(json);
-        })
-        .catch(error =>
-          dispatch(receivedDimensionAttributesError(dimensionName, error))
-        );
-      console.log('end ajax'); 
-      //////////////////////////////////////////////
-    
-  }
   clickHandler(id){
     this.props.toggleActive(id);
   }
@@ -68,5 +46,5 @@ export default connect(
     todo: state.todo,
     view: state.view
   }),
-  {toggleActive, retrieveItems},
+  {toggleActive},
 )(TodoList);
