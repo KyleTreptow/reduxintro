@@ -35,7 +35,7 @@ class Home extends Component {
         <Header />
     		<TabSelect />
         <section className="section-default">
-        <div className="container-fluid">
+        <div className="container">
 
     		{/* Conditional to render just ToDos */}
     		{ this.props.view.todoView && !this.props.view.completedView &&

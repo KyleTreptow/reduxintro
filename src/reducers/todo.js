@@ -13,10 +13,6 @@ const initialState = {
 export default function (state = initialState, action) {
   switch (action.type) {
     case 'RETRIEVE_TODOS':
-      // console.log('------------');
-      // console.log('Retrieve Todos Reducer Payload:');
-      // console.log(action.payload);
-      // console.log('------------');
       let todo_data = action.payload;
       console.log(todo_data)
       return {

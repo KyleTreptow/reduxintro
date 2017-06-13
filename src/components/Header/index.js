@@ -5,7 +5,7 @@ class Header extends Component {
     render() {
     return (
       <header id="app-header">
-        <div className="container-fluid">
+        <div className="container">
           <p>Header Here...</p>
         </div>
       </header>

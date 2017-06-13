@@ -4,7 +4,7 @@ class Footer extends Component {
     render() {
     return (
       <footer id="app-footer">
-        <div className="container-fluid">
+        <div className="container">
           <p>Footer Here...</p>
         </div>
       </footer>
