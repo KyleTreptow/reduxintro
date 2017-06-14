@@ -1,6 +1,10 @@
 var Sequelize = require('sequelize');
 
-var sequelize = new Sequelize('todo', 'kyletreptow', 'spitfire7*', {
+const DB_NAME = process.env.API_DB_NAME;
+const DB_USER = process.env.API_DB_USER;
+const DB_PASS = process.env.API_DB_PASS;
+
+var sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASS, {
   host: 'localhost',
   dialect: 'postgres',
 
@@ -11,18 +15,11 @@ var sequelize = new Sequelize('todo', 'kyletreptow', 'spitfire7*', {
   },
 });
 
-// load models                 
-var models = [                 
-  'Todos',            
+// load models
+var models = [
+  'Todos',
 ];
 
 models.forEach(function(model) {
   module.exports[model] = sequelize.import(__dirname + '/' + model);
 });
-
-
-
-
-
-
-

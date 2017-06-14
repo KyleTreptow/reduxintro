@@ -2,11 +2,7 @@ import update from 'react-addons-update';
 
 // seed info
 const initialState = {
-  "todolist": [
-    { name :  'Example Init State 001', completed : false},
-    { name :  'Example Init State 002', completed : false},
-    { name :  'Example Init State 003', completed : false}
-  ]
+  "todolist": []
 };
 
 
@@ -14,11 +10,10 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case 'RETRIEVE_TODOS':
       let todo_data = action.payload;
-      console.log(todo_data)
       return {
         ...state,
         todolist: state.todolist.concat(todo_data)
-      };   
+      };
     case 'NEW_TODO':
       let new_todo = {"name": action.payload, "completed": false};
       return {

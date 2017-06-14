@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { toggleActive } from '../../actions/app.js';
+import {retrieveItems} from '../../actions/app.js';
 
 class TodoList extends Component {
   clickHandler(id){
     this.props.toggleActive(id);
   }
+  componentWillMount(){
+    this.props.retrieveItems();
+  }
   render() {
-    
+
     let that = this;
     return(
-      
+
       <ul id="todo-list">
         { this.props.todo.todolist.map(function(item, index){
           // vars
@@ -34,7 +38,7 @@ class TodoList extends Component {
 
         }) }
       </ul>
-        
+
     );
   }
 }
@@ -44,5 +48,5 @@ export default connect(
     todo: state.todo,
     view: state.view
   }),
-  {toggleActive},
+  {toggleActive, retrieveItems},
 )(TodoList);
