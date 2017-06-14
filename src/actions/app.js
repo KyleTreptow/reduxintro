@@ -9,9 +9,17 @@ export function toggleActive(id) {
 
 export function formSubmit(data) {
   return (dispatch) => {
-    dispatch({type: "NEW_TODO", payload: data.todo })
-    dispatch(reset('todo'));
-  };
+    console.log("Data!: ", data);
+    //dispatch({type: "NEW_TODO", payload: data.todo })
+    rest.post(`/todos`, data.todo)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      dispatch(reset('todo'));
+	  };
 }
 
 export function todoViewActive() {

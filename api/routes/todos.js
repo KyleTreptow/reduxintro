@@ -24,5 +24,16 @@ router.get('/', function(req, res, next) {
     	console.error('Aw beans, it broke:', err);
   	});
 });
+router.post('/', function(req, res, next) {
+    Todos.create({
+      name: req.body,
+      completed: false
+    }).then(() => {
+  		res.send("sending");
+  	})
+  	.catch(Sequelize.ValidationError, function (err) {
+    	console.error('Aw beans, it broke:', err);
+  	});
+});
 
 module.exports = router;
