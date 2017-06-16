@@ -9,17 +9,12 @@ export function toggleActive(id) {
 
 export function formSubmit(data) {
   return (dispatch) => {
-    console.log("Data!: ", data);
     //dispatch({type: "NEW_TODO", payload: data.todo })
-    rest.post(`/todos`, data.todo)
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      dispatch(reset('todo'));
-	  };
+    rest.post(`/todos`, data).then(
+      updateTodos(dispatch)
+    );
+    dispatch(reset('todo'));
+	};
 }
 
 export function todoViewActive() {
@@ -50,4 +45,14 @@ export function retrieveItems() {
           console.log(err);
         });
 	};
+}
+
+function updateTodos(dispatch) {
+    return rest.fetch(`/todos`)
+      .then((response) => {
+        dispatch({type: 'RETRIEVE_TODOS', payload: response })
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 }

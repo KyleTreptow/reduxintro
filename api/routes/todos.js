@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var connection = require('../model');
 var Todos = require('../model').Todos;
+var Sequelize = require('sequelize');
+
 
 // force: true will drop the table if it already exists
  Todos.sync({force: true}).then(() => {
@@ -26,11 +28,9 @@ router.get('/', function(req, res, next) {
 });
 router.post('/', function(req, res, next) {
     Todos.create({
-      name: req.body,
+      name: req.body.todo,
       completed: false
-    }).then(() => {
-  		res.send("sending");
-  	})
+    })
   	.catch(Sequelize.ValidationError, function (err) {
     	console.error('Aw beans, it broke:', err);
   	});

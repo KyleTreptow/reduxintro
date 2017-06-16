@@ -16,7 +16,7 @@ class TodoList extends Component {
     return(
 
       <ul id="todo-list">
-        { this.props.todo.todolist.map(function(item, index){
+        { this.props.todolist.map(function(item, index){
           // vars
           let status = item.completed === true ? 'completed' : 'incomplete';
           let icon = item.completed === true ? 'fa fa-check' : 'fa fa-times';
@@ -45,7 +45,7 @@ class TodoList extends Component {
 
 export default connect(
   state => ({
-    todo: state.todo,
+    todolist: state.todo.todolist,
     view: state.view
   }),
   {toggleActive, retrieveItems},
