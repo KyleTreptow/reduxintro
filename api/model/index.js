@@ -5,6 +5,7 @@ const DB_USER = process.env.API_DB_USER;
 const DB_PASS = process.env.API_DB_PASS;
 
 var sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASS, {
+
   host: 'localhost',
   dialect: 'postgres',
 
@@ -14,12 +15,12 @@ var sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASS, {
     idle: 10000
   },
 });
-
-// load models
-var models = [
-  'Todos',
+              
+var models = [                 
+  'Todos',            
 ];
 
 models.forEach(function(model) {
   module.exports[model] = sequelize.import(__dirname + '/' + model);
 });
+
