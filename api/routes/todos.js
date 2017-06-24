@@ -12,6 +12,22 @@ var Todos = require('../model').Todos;
 // 	    completed: false
 // 	  }
 //   );
+// }).then(() => {
+//   // Table created
+//   return Todos.create(
+// 	  {
+// 	    name: 'Database Seed 002',
+// 	    completed: false
+// 	  }
+//   );
+// }).then(() => {
+//   // Table created
+//   return Todos.create(
+// 	  {
+// 	    name: 'Database Seed 003',
+// 	    completed: false
+// 	  }
+//   );
 // });
 
 
