@@ -7,27 +7,16 @@ import ToDoList from '../../components/ToDoList';
 import ToDoForm from '../../components/ToDoForm';
 import TabSelect from '../../components/TabSelect';
 import {formSubmit} from '../../actions/app.js';
-import {retrieveItems} from '../../actions/app.js';
 
 
 
 class Home extends Component {
-  onSubmit = data => this.props.formSubmit(data); 
+  onSubmit = data => this.props.formSubmit(data);
 
   componentDidMount(){
     console.log('Home Component Mounted');
-    //////////////////////////////////////////////
-    let ajaxCall =  fetch('http://localhost:4000/todos')
-      .then(response => response.json())
-      .then(json => {
-        // console.log(json);
-        // return json;
-        this.props.retrieveItems(json);
-      })
-      .catch(error =>
-        dispatch(receivedDimensionAttributesError(dimensionName, error))
-      );
-    //////////////////////////////////////////////
+    ///////Removed ajax call - should be in acions////////////////
+
   }
   render() {
     return (
@@ -58,7 +47,7 @@ class Home extends Component {
   					<ToDoList />
   				</div>
   			}
-        
+
         </div>
         </section>
   			<ToDoForm onSubmit={this.onSubmit} />
@@ -73,6 +62,5 @@ export default connect(
     todo: state.todo,
     view: state.view,
   }),
-  {formSubmit, retrieveItems}
+  {formSubmit}
 )(Home);
-

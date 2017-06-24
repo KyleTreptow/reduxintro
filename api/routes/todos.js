@@ -4,6 +4,7 @@ var connection = require('../model');
 var Todos = require('../model').Todos;
 
 // force: true will drop the table if it already exists
+
 // Todos.sync({force: true}).then(() => {
 //   // Table created
 //   return Todos.create(
@@ -29,6 +30,7 @@ var Todos = require('../model').Todos;
 // 	  }
 //   );
 // });
+
 
 
 /* GET todos listing. */
