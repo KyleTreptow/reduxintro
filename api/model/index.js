@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 var Sequelize = require('sequelize');
 
 const DB_NAME = process.env.API_DB_NAME;
@@ -15,12 +17,11 @@ var sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASS, {
     idle: 10000
   },
 });
-              
-var models = [                 
-  'Todos',            
+
+var models = [
+  'Todos',
 ];
 
 models.forEach(function(model) {
   module.exports[model] = sequelize.import(__dirname + '/' + model);
 });
-
