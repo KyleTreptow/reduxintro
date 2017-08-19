@@ -2,9 +2,10 @@ import {reset} from 'redux-form';
 import rest from './helpers/rest'
 
 export function toggleActive(id) {
-  return (dispatch) => {
-    dispatch({ type: "TOGGLE_ACTIVE", payload: id });
-  };
+  // return (dispatch) => {
+  //   dispatch({ type: "TOGGLE_ACTIVE", payload: id });
+  // };
+  console.log('ToggleActive, ID: '+id);
 }
 
 export function formSubmit(data) {
