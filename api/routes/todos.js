@@ -43,13 +43,11 @@ router.get('/', function(req, res, next) {
 /* UPDATE todos listing. */
 router.put('/', function(req, res) {
   Todos.findById(req.body.id)
-    .on('success', function (todo) {
-      if (todo) {
-        todo.updateAttributes({
+    .then(todos => {
+        todos.updateAttributes({
          completed: !req.body.completed
         })
-        .success(function () {console.log("Successfully updated")})
-       }
+        .then(function () {console.log("Successfully updated")})
     });
 });
 
