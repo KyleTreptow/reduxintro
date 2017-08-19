@@ -12,7 +12,7 @@ export default function (state = initialState, action) {
       let todo_data = action.payload;
       return {
         ...state,
-        todolist: state.todolist.concat(todo_data)
+        todolist: todo_data
       };
     case 'NEW_TODO':
       let new_todo = {"name": action.payload, "completed": false};
