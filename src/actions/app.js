@@ -1,10 +1,16 @@
 import {reset} from 'redux-form';
 import rest from './helpers/rest'
 
-export function toggleActive(id) {
+export function toggleActive(id, completed) {
   console.log('ToggleActive, ID: '+id);
   return (dispatch) => {
-    dispatch({ type: "TOGGLE_ACTIVE", payload: id });
+    rest.patch(`/todos`, {"id": id, "completed": completed})
+        .then((response) => {
+          dispatch({type: "RETRIEVE_TODOS", payload: response })
+        })
+        .catch((err) => {
+          console.log(err);
+        });
   };
 }
 

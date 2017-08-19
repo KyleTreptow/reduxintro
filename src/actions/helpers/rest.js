@@ -45,6 +45,7 @@ export default {
   },
 
   patch(url, data) {
+    console.log("PATCH CALL MADE", url, data);
     const body = JSON.stringify(data);
 
     return fetch(`${API}${url}`, {

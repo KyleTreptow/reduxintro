@@ -4,8 +4,8 @@ import { toggleActive } from '../../actions/app.js';
 import {retrieveItems} from '../../actions/app.js';
 
 class TodoList extends Component {
-  clickHandler(id){
-    this.props.toggleActive(id);
+  clickHandler(id, completed){
+    this.props.toggleActive(id, completed);
   }
   componentWillMount(){
     this.props.retrieveItems();
@@ -23,16 +23,16 @@ class TodoList extends Component {
           //Completed only
           if (item.completed && that.props.view.completedView){
           return(
-            <li className={ 'todo-item ' + status } onClick={that.clickHandler.bind(that, index)} key={index}>{item.name}</li>
+            <li className={ 'todo-item ' + status } onClick={that.clickHandler.bind(that, item.id, item.completed)} key={item.id}>{item.name}</li>
           );}
           else if(!item.completed  && that.props.view.todoView && !that.props.view.completedView){
             return(
-              <li className={ 'todo-item ' + status } onClick={that.clickHandler.bind(that, index)} key={index}>{item.name}</li>
+              <li className={ 'todo-item ' + status } onClick={that.clickHandler.bind(that, item.id, item.completed)} key={item.id}>{item.name}</li>
             );
           }
           else if(that.props.view.todoView && that.props.view.completedView){
             return(
-              <li className={ 'todo-item ' + status } onClick={that.clickHandler.bind(that, index)} key={index}>{item.name}</li>
+              <li className={ 'todo-item ' + status } onClick={that.clickHandler.bind(that, item.id, item.completed)} key={item.id}>{item.name}</li>
             );
           }
 

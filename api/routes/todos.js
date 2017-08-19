@@ -40,6 +40,19 @@ router.get('/', function(req, res, next) {
   	});
 });
 
+/* UPDATE todos listing. */
+router.put('/', function(req, res) {
+  Todos.findById(req.body.id)
+    .on('success', function (todo) {
+      if (todo) {
+        todo.updateAttributes({
+         completed: !req.body.completed
+        })
+        .success(function () {console.log("Successfully updated")})
+       }
+    });
+});
+
 router.post('/', function (req, res) {
   res.send('POST request to the homepage')
 })
