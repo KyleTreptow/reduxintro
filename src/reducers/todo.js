@@ -22,13 +22,13 @@ export default function (state = initialState, action) {
       };
     case 'TOGGLE_ACTIVE':
       console.log(state.todolist[action.payload].completed);
-      return update(state,{
-        todolist:{
-          [action.payload]:{
-            completed:{$set : !state.todolist[action.payload].completed}
-          }
-        }
-      })
+      // return update(state,{
+      //   todolist:{
+      //     [action.payload]:{
+      //       completed:{$set : !state.todolist[action.payload].completed}
+      //     }
+      //   }
+      // })
     default:
       return state;
   }
