@@ -6,7 +6,7 @@ export function toggleActive(id, completed) {
   return (dispatch) => {
     rest.patch(`/todos`, {"id": id, "completed": completed})
         .then((response) => {
-          dispatch({type: "RETRIEVE_TODOS", payload: response })
+          console.log(response)
         })
         .catch((err) => {
           console.log(err);
@@ -14,10 +14,26 @@ export function toggleActive(id, completed) {
   };
 }
 
+function updateItems(dispatch) {
+  rest.fetch(`/todos`)
+      .then((response) => {
+        dispatch({type: "RETRIEVE_TODOS", payload: response })
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+}
+
 export function formSubmit(data) {
+  console.log(data);
   return (dispatch) => {
-    dispatch({type: "NEW_TODO", payload: data.todo })
-    dispatch(reset('todo'));
+    rest.post(`/todos`, {"name": data.todo, "completed": false})
+        .then((response) => {
+          updateItems(dispatch);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
   };
 }
 

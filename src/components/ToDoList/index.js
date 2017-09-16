@@ -22,6 +22,7 @@ class TodoList extends Component {
           let icon = item.completed === true ? 'fa fa-check' : 'fa fa-times';
           //Completed only
           if (item.completed && that.props.view.completedView){
+            console.log(item.id);
           return(
             <li className={ 'todo-item ' + status } onClick={that.clickHandler.bind(that, item.id, item.completed)} key={item.id}>{item.name}</li>
           );}

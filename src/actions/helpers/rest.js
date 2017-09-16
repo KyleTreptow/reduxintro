@@ -9,6 +9,7 @@ function headers() {
 }
 
 function parseResponse(response) {
+  console.log("PARSED RESPONSE: ", response);
   return response.json().then((json) => {
     if (!response.ok) {
       return Promise.reject(json);
