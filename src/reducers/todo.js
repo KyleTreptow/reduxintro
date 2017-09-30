@@ -5,11 +5,11 @@ const initialState = {
   "todolist": []
 };
 
-
 export default function (state = initialState, action) {
   switch (action.type) {
     case 'RETRIEVE_TODOS':
       let todo_data = action.payload;
+      console.log('RETRIEVE_TODOS');
       return {
         ...state,
         todolist: todo_data
@@ -21,14 +21,17 @@ export default function (state = initialState, action) {
         todolist: state.todolist.concat(new_todo)
       };
     case 'TOGGLE_ACTIVE':
+
       console.log(state.todolist[action.payload].completed);
+
       // return update(state,{
       //   todolist:{
       //     [action.payload]:{
       //       completed:{$set : !state.todolist[action.payload].completed}
       //     }
       //   }
-      // })
+      // });
+      
     default:
       return state;
   }

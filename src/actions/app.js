@@ -6,10 +6,11 @@ export function toggleActive(id, completed) {
   return (dispatch) => {
     rest.patch(`/todos`, {"id": id, "completed": completed})
         .then((response) => {
-          console.log(response)
+          // console.log(response);
+          updateItems(dispatch);
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
         });
   };
 }
@@ -27,13 +28,16 @@ function updateItems(dispatch) {
 export function formSubmit(data) {
   console.log(data);
   return (dispatch) => {
-    rest.post(`/todos`, {"name": data.todo, "completed": false})
+    if(data.todo) {
+      rest.post(`/todos`, {"name": data.todo, "completed": false})
         .then((response) => {
           updateItems(dispatch);
+          dispatch(reset('todo'));
         })
         .catch((err) => {
           console.log(err);
-        });
+      });
+    }
   };
 }
 

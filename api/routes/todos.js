@@ -47,7 +47,10 @@ router.put('/', function(req, res) {
         todos.updateAttributes({
          completed: !req.body.completed
         })
-        .then(function () {console.log("Successfully updated")})
+        .then(function () {
+          console.log("Successfully updated");
+          res.send({"error": false});
+        })
     });
 });
 
